@@ -181,12 +181,7 @@ public class FreizeitbaederView {
 
 	public void zeigeFehlermeldungAn(String string) {
 		
-	}
-
-	public void zeigeFehlermeldungAn(String titel, String meldung) {
-		
-	}
-    
+	}    
     
 
 }
