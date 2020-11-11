@@ -40,7 +40,8 @@ public class FreizeitbaederView {
     private MenuItem mnItmTxtExport 	= new MenuItem("txt-Export");
     //-------Ende Attribute der grafischen Oberflaeche-------
     
-    public FreizeitbaederView(Stage primaryStage){
+    public FreizeitbaederView(FreizeitbaederControl freizeitbaederControl, 
+        	Stage primaryStage, FreizeitbaederModel freizeitbaederModel){
     	Scene scene = new Scene(this.pane, 560, 340);
     	primaryStage.setScene(scene);
     	primaryStage.setTitle("Verwaltung von Freizeitbädern");
@@ -49,7 +50,8 @@ public class FreizeitbaederView {
 		this.initListener();
     }
     
-    private void initKomponenten(){
+
+	private void initKomponenten(){
     	// Labels
        	lblEingabe.setLayoutX(20);
     	lblEingabe.setLayoutY(40);
@@ -181,7 +183,9 @@ public class FreizeitbaederView {
 
 	public void zeigeFehlermeldungAn(String string) {
 		
-	}    
+	}
+
+	
     
 
 }

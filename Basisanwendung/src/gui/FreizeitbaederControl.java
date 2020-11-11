@@ -13,6 +13,8 @@ public class FreizeitbaederControl {
     
     public FreizeitbaederControl(Stage primaryStage){
     	this.freizeitbaederModel = new FreizeitbaederModel();
+    	//Überarbeitet: Erzeugen der View im Controller
+    	this.freizeitbaederView = new FreizeitbaederView(this, primaryStage, freizeitbaederModel); 
     }
     
     //Änderung
@@ -20,7 +22,7 @@ public class FreizeitbaederControl {
     	try{
 	    	if("csv".equals(typ)){
 	    		// Aufruf des Models zum Schreiben des Freizeitbads in die Datei des vorgegebenen Typs und Ausgabe der Meldung
-	    		freizeitbaederModel.schreibeFreizeitbaederInCsvDatei();
+	    		this.freizeitbaederModel.schreibeFreizeitbaederInCsvDatei();
 	    	}
 	    	else{
 		    	freizeitbaederView.zeigeInformationsfensterAn("Noch nicht implementiert!");
@@ -34,4 +36,6 @@ public class FreizeitbaederControl {
 		}
     } 
     
+  
+	
 }
