@@ -13,11 +13,11 @@ public class FreizeitbaederControl {
     
     public FreizeitbaederControl(Stage primaryStage){
     	this.freizeitbaederModel = new FreizeitbaederModel();
-    	//Überarbeitet: Erzeugen der View im Controller
+    	//Überarbeitet: Erzeugen der View im Controller (Praktikum 1)
     	this.freizeitbaederView = new FreizeitbaederView(this, primaryStage, freizeitbaederModel); 
     }
     
-    //Änderung
+    //Praktikum 1 - MVC
     void schreibeFreizeitbaederInDatei(String typ){
     	try{
 	    	if("csv".equals(typ)){

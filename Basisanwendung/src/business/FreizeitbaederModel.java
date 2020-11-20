@@ -1,9 +1,11 @@
 package business;
    
-import java.io.BufferedWriter;
 import business.Freizeitbad;
-import java.io.FileWriter;
 import java.io.IOException;
+import fileCreator.ConcreteCsvWriterCreator;
+import fileCreator.ConcreteTxtWriterCreator;
+import fileCreator.WriterCreator;
+import fileCreator.WriterProduct;
 
 public class FreizeitbaederModel {
 	     
@@ -18,7 +20,8 @@ public class FreizeitbaederModel {
 		this.freizeitbad = freizeitbad;
     }
     
-    //Ąnderung
+    /*
+    //Praktikum 1 - MVC
     public void schreibeFreizeitbaederInCsvDatei()
 	    //Werfen einer IOException
     	throws IOException{
@@ -26,5 +29,27 @@ public class FreizeitbaederModel {
 			  new FileWriter("Freizeitbaeder.csv", true));
     		aus.write(this.getFreizeitbad().gibFreizeitbadZurueck(';'));
     		aus.close();
-	}    
+	}*/    
+    
+    //Praktikum 2 - Realisierung der Fabrik-Methode
+    public void schreibeFreizeitbaederInCsvDatei()
+    		throws IOException{
+    			// Kreieren eines Creator-Objekts und Abspeicherung mit Hilfe einer Variablen vom Typ der entsprechenden abstrakten Creator-Klasse.
+    			WriterCreator writerCreator = new ConcreteCsvWriterCreator();
+    			// Kreieren eines Product-Objekts mit Hilfe der Factory-Methode des Creator-Objekts und Abspeicherung mit Hilfe einer Variablen vom Typ der entsprechenden abstrakten Product-Klasse.
+    			WriterProduct writerProduct = writerCreator.factoryMethod();
+	    		writerProduct.fuegeInDateiHinzu(this.freizeitbad);
+	    		writerProduct.schliesseDatei();
+    		}
+    
+    //Praktikum 2 - Ausbau der Fabrik-Methode
+    public void schreibeFreizeitbadInTxtDatei()
+		    throws IOException{
+			    WriterCreator writerCreator = new ConcreteTxtWriterCreator();
+			    WriterProduct writerProduct = writerCreator.factoryMethod();
+			    writerProduct.fuegeInDateiHinzu(this.freizeitbad);
+			    writerProduct.schliesseDatei();
+    }
+    
+    
 }

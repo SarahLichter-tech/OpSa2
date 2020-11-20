@@ -166,7 +166,7 @@ public class FreizeitbaederView {
     	}
     }	
     
-  //Änderung
+  //Praktikum 1 - MVC
     private void schreibeFreizeitbaederInDatei(String typ){
  	   // Aufruf des Controls zum Schreiben des Freizeitbads in die Datei des vorgegebenen Typs.
  	   freizeitbaederControl.schreibeFreizeitbaederInDatei(typ);
