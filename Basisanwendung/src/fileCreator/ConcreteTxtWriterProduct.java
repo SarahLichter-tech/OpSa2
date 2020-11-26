@@ -26,7 +26,9 @@ BufferedWriter aus;
 	    aus.close();
 	}
 
+	//Überarbeitet Praktikum 2: schliesseDatei() darf nicht leer sein/ close-Befehl
 	@Override
 	public void schliesseDatei() throws IOException {	
+		aus.close();
 	}
 }

@@ -23,9 +23,12 @@ public class FreizeitbaederControl {
 	    	if("csv".equals(typ)){
 	    		// Aufruf des Models zum Schreiben des Freizeitbads in die Datei des vorgegebenen Typs und Ausgabe der Meldung
 	    		this.freizeitbaederModel.schreibeFreizeitbaederInCsvDatei();
+	    		freizeitbaederView.zeigeInformationsfensterAn("Das Freizeitbad wurde gespeichert!");
 	    	}
 	    	else{
-		    	freizeitbaederView.zeigeInformationsfensterAn("Noch nicht implementiert!");
+	    		//Überarbeitet Praktikum 2: Aufruf schreibeFreizeitbadInTxtDatei();
+	    		freizeitbaederModel.schreibeFreizeitbadInTxtDatei();
+		    	freizeitbaederView.zeigeInformationsfensterAn("Das Freizeitbad wurde gespeichert!");
 		    }
     	}
     	catch(IOException exc){
