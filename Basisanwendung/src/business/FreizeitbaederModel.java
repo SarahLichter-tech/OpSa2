@@ -6,8 +6,9 @@ import fileCreator.ConcreteCsvWriterCreator;
 import fileCreator.ConcreteTxtWriterCreator;
 import fileCreator.WriterCreator;
 import fileCreator.WriterProduct;
+import observerPattern.ConcreteObservable;
 
-public class FreizeitbaederModel {
+public class FreizeitbaederModel extends ConcreteObservable {
 	     
     // speichert temporaer ein Objekt vom Typ Freizeitbad
     private Freizeitbad freizeitbad;
@@ -18,7 +19,24 @@ public class FreizeitbaederModel {
     
     public void setFreizeitbad(Freizeitbad freizeitbad) {
 		this.freizeitbad = freizeitbad;
+		this.notifyObservers();
     }
+    
+  //Praktikum 3---------------------------Singleton------------------------------
+	
+  	private static FreizeitbaederModel freizeitbaederModel = null;
+  	private FreizeitbaederModel(){
+  		
+  	}
+  	
+  	public static FreizeitbaederModel getInstance(){
+  		if(freizeitbaederModel == null){
+  			freizeitbaederModel = new FreizeitbaederModel();
+  		}
+  		
+  		return freizeitbaederModel;
+  	}	
+  	//----------------------------------------------------------------
     
     /*
     //Praktikum 1 - MVC
