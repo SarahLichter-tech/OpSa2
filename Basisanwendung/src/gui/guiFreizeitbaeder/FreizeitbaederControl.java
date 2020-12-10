@@ -15,12 +15,11 @@ public class FreizeitbaederControl implements Observer {
     private FreizeitbaederModel freizeitbaederModel;
     
     public FreizeitbaederControl(Stage primaryStage){
-    	//this.freizeitbaederModel = new FreizeitbaederModel();
+    	this.freizeitbaederModel = FreizeitbaederModel.getInstance();
     	//Überarbeitet: Erzeugen der View im Controller (Praktikum 1)
     	this.freizeitbaederView = new FreizeitbaederView(this, primaryStage, freizeitbaederModel); 
     	//Praktikum 3
-    	freizeitbaederModel.addObserver(this);
-		freizeitbaederModel.addObserver(this);
+    	this.freizeitbaederModel.addObserver(this);
     }
     
     //Praktikum 1 - MVC

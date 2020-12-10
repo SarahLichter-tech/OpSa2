@@ -41,13 +41,15 @@ public class FreizeitbaederView {
     //-------Ende Attribute der grafischen Oberflaeche-------
     
     public FreizeitbaederView(FreizeitbaederControl freizeitbaederControl, 
-        	Stage primaryStage, FreizeitbaederModel freizeitbaederModel){
+        Stage primaryStage, FreizeitbaederModel freizeitbaederModel){
     	Scene scene = new Scene(this.pane, 560, 340);
     	primaryStage.setScene(scene);
     	primaryStage.setTitle("Verwaltung von Freizeitbädern");
     	primaryStage.show();
-    	this.initKomponenten();
-		this.initListener();
+    	this.freizeitbaederControl = freizeitbaederControl;
+    	this.freizeitbaederModel = freizeitbaederModel;
+    		this.initKomponenten();
+			this.initListener();
     }
     
 
