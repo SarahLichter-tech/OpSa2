@@ -1,7 +1,10 @@
 package gui.guiFreizeitbaeder;
 
 import business.FreizeitbaederModel;
-import gui.guiFreizeitbaeder.FreizeitbaederControl;
+//import gui.guiFreizeitbaeder.FreizeitbaederControl;
+
+import java.util.ArrayList;
+
 import business.Freizeitbad;
 import javafx.event.*;
 import javafx.scene.Scene;
@@ -22,9 +25,9 @@ public class FreizeitbaederView {
     private Label lblEingabe    	 	= new Label("Eingabe");
     private Label lblAnzeige   	 	    = new Label("Anzeige");
     private Label lblName 				= new Label("Name:");
-    private Label lblGeoeffnetVon   	= new Label("Geöffnet von:");
-    private Label lblGeoeffnetBis  	 	= new Label("Geöffnet bis:");
-    private Label lblBeckenlaenge   	= new Label("Beckenlänge:");
+    private Label lblGeoeffnetVon   	= new Label("GeÃ¶ffnet von:");
+    private Label lblGeoeffnetBis  	 	= new Label("GeÃ¶ffnet bis:");
+    private Label lblBeckenlaenge   	= new Label("BeckenlÃ¤nge:");
     private Label lblWassTemperatur  	= new Label("Wassertemperatur:");
     private TextField txtName 	 		= new TextField();
     private TextField txtGeoeffnetVon	= new TextField();
@@ -44,7 +47,7 @@ public class FreizeitbaederView {
         Stage primaryStage, FreizeitbaederModel freizeitbaederModel){
     	Scene scene = new Scene(this.pane, 560, 340);
     	primaryStage.setScene(scene);
-    	primaryStage.setTitle("Verwaltung von Freizeitbädern");
+    	primaryStage.setTitle("Verwaltung von FreizeitbÃ¤dern");
     	primaryStage.show();
     	this.freizeitbaederControl = freizeitbaederControl;
     	this.freizeitbaederModel = freizeitbaederModel;
@@ -115,37 +118,30 @@ public class FreizeitbaederView {
  	    pane.getChildren().add(mnbrMenuLeiste);
    }
    
-   private void initListener() {
-	   btnEingabe.setOnAction(new EventHandler<ActionEvent>() {
-           @Override
-           public void handle(ActionEvent e) {
+	//Lambda-AusdrÃ¼cke fÃ¼r die Listener
+	private void initListener() {
+	   btnEingabe.setOnAction(e-> {
+           //@Override
+           //public void handle(ActionEvent e) {
        	    nehmeFreizeitbadAuf();
-           }
 	    });
-	    btnAnzeige.setOnAction(new EventHandler<ActionEvent>() {
-	    	@Override
-	        public void handle(ActionEvent e) {
+	    btnAnzeige.setOnAction(/*new EventHandler<ActionEvent>()*/ e-> {
+	    	//@Override
+	        //public void handle(ActionEvent e) {
 	            zeigeFreizeitbaederAn();
-	        } 
   	    });  
-	   mnItmCsvExport.setOnAction(new EventHandler<ActionEvent>() {
-		   @Override
-		   public void handle(ActionEvent e) {
+	   mnItmCsvExport.setOnAction(e -> {
 			   schreibeFreizeitbaederInDatei("csv");
-		   }
 	   });
-	   mnItmTxtExport.setOnAction(new EventHandler<ActionEvent>() {
-		   @Override
-		   public void handle(ActionEvent e) {
+	   mnItmTxtExport.setOnAction(e -> {
 			   schreibeFreizeitbaederInDatei("txt");
-		   }
 	   });
     }
    
     
     private void nehmeFreizeitbadAuf(){
     	try{
-    		this.freizeitbaederModel.setFreizeitbad(new Freizeitbad(
+    		this.freizeitbaederModel.addFreizeitbad(new Freizeitbad(
     			txtName.getText(), 
    	            txtGeoeffnetVon.getText(),
    	            txtGeoeffnetBis.getText(),
@@ -158,15 +154,27 @@ public class FreizeitbaederView {
      	}
     }
    
-    void zeigeFreizeitbaederAn(){
-    	if(this.freizeitbaederModel.getFreizeitbad() != null){
+    //Praktikum 4 - Java 5, Java 8 und JUnit 5
+    ArrayList<Freizeitbad> freizeitbaeder = new ArrayList<>();
+    
+    public void zeigeFreizeitbaederAn(){
+    	/*if(this.freizeitbaederModel.getFreizeitbad() != null){	
     		txtAnzeige.setText(
-    			this.freizeitbaederModel.getFreizeitbad().gibFreizeitbadZurueck(' '));
+    			this.freizeitbaederModel.getFreizeitbad().gibFreizeitbadZurueck(' '));*/
+    	if(freizeitbaederModel.getFreizeitbaeder().size() > 0){
+    		StringBuffer text = new StringBuffer();
+    		
+    		// Ergaenzen: for each â€“ Schleife ueber ArrayList
+    		for(Freizeitbad fzb: freizeitbaederModel.getFreizeitbaeder()){
+    			text.append(fzb.gibFreizeitbadZurueck(' ') + "\n");
+    		}
+    		this.txtAnzeige.setText(text.toString());
     	}
     	else{
     		zeigeInformationsfensterAn("Bisher wurde kein Freizeitbad aufgenommen!");
     	}
-    }	
+    }
+  
     
   //Praktikum 1 - MVC
     private void schreibeFreizeitbaederInDatei(String typ){

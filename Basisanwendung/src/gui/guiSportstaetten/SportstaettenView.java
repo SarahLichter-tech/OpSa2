@@ -1,5 +1,8 @@
 package gui.guiSportstaetten;
 
+//import java.util.ArrayList;
+
+import business.Freizeitbad;
 import business.FreizeitbaederModel;
 import javafx.event.*;
 import javafx.scene.Scene;
@@ -15,7 +18,7 @@ public class SportstaettenView {
 	
 	// Hier ergaenzen - Praktikum 3 Singelton,Observe
 	private FreizeitbaederModel freizeitbaederModel;
-	private SportstaettenControl sportstaettenControl;
+	//private SportstaettenControl sportstaettenControl;
 	
     	//---Anfang Attribute der grafischen Oberflaeche---
     	private Pane pane     				       
@@ -25,6 +28,9 @@ public class SportstaettenView {
     	private TextArea txtAnzeigeFreizeitbaeder  = new TextArea();
     	private Button btnAnzeigeFreizeitbaeder = new Button("Anzeige");
     	//-------Ende Attribute der grafischen Oberflaeche-------
+		//private Object txtAnzeige;
+
+		private SportstaettenControl sportstaettenControl;
     
     	public SportstaettenView(/* Hier ergaenzen … Praktikum 3 Singelton,Observe */ 
     			SportstaettenControl sportstaettenControl, Stage primaryStage, FreizeitbaederModel freizeitbaederModel){
@@ -59,28 +65,33 @@ public class SportstaettenView {
         	pane.getChildren().add(btnAnzeigeFreizeitbaeder); 
    }
    
-   private void initListener() {
-	    btnAnzeigeFreizeitbaeder.setOnAction(
- 			new EventHandler<ActionEvent>() {
-	    		@Override
-	        	public void handle(ActionEvent e) {
-	            	zeigeFreizeitbaederAn();
-	        	} 
+    	//Lambda
+    	private void initListener() {
+		    btnAnzeigeFreizeitbaeder.setOnAction(e-> {
+		            	zeigeFreizeitbaederAn();
    	    });
     }
    
-    void zeigeFreizeitbaederAn(){
-    		if(freizeitbaederModel.getFreizeitbad() != null){
+    public void zeigeFreizeitbaederAn(){
+    		/*if(freizeitbaederModel.getFreizeitbad() != null){
     			txtAnzeigeFreizeitbaeder.setText(
     				freizeitbaederModel.getFreizeitbad()
  				.gibFreizeitbadZurueck(' '));
-    		}
-    		else{
-    			zeigeInformationsfensterAn(
- 				"Bisher wurde kein Freizeitbad aufgenommen!");
-    		}
-    }	
-   	
+    		}*/
+	    	if(freizeitbaederModel.getFreizeitbaeder().size() > 0){
+	    		StringBuffer text = new StringBuffer();
+	    		
+	    		// Ergaenzen: for each – Schleife ueber ArrayList
+	    		for(Freizeitbad fzb: freizeitbaederModel.getFreizeitbaeder()){
+	    			text.append(fzb.gibFreizeitbadZurueck(' ') + "\n");
+	    		}
+	    		this.txtAnzeigeFreizeitbaeder.setText(text.toString());
+	    	}
+	    	else{
+	    		zeigeInformationsfensterAn("Bisher wurde kein Freizeitbad aufgenommen!");
+	    	}
+    }
+	    
     void zeigeInformationsfensterAn(String meldung){
     	new MeldungsfensterAnzeiger(AlertType.INFORMATION,"Information", meldung).zeigeMeldungsfensterAn();
     }	

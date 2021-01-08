@@ -6,7 +6,7 @@ package gui.guiSportstaetten;
 //import java.util.Observer;
 import observerPattern.Observer;
 import business.FreizeitbaederModel;
-import gui.guiSportstaetten.SportstaettenView;
+//import gui.guiSportstaetten.SportstaettenView;
 import javafx.stage.Stage;
 
 public class SportstaettenControl implements Observer {
