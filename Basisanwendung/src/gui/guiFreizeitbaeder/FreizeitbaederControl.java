@@ -1,8 +1,8 @@
 package gui.guiFreizeitbaeder;
 
 import java.io.IOException;
-import business.FreizeitbaederModel;
-//import gui.guiFreizeitbaeder.FreizeitbaederView;
+import business.businessFreizeitbaeder.FreizeitbaederModel;
+import gui.guiFreizeitbaeder.FreizeitbaederView;
 import javafx.stage.Stage;
 //import java.util.Observable;
 //import java.util.Observer;
@@ -32,7 +32,7 @@ public class FreizeitbaederControl implements Observer {
 	    	}
 	    	else{
 	    		//Überarbeitet Praktikum 2: Aufruf schreibeFreizeitbadInTxtDatei();
-	    		freizeitbaederModel.schreibeFreizeitbadInTxtDatei();
+	    		freizeitbaederModel.schreibeFreizeitbaederInTxtDatei();
 		    	freizeitbaederView.zeigeInformationsfensterAn("Das Freizeitbad wurde gespeichert!");
 		    }
     	}

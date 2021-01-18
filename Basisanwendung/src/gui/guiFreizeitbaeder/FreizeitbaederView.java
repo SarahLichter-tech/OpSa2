@@ -1,11 +1,11 @@
 package gui.guiFreizeitbaeder;
 
-import business.FreizeitbaederModel;
-//import gui.guiFreizeitbaeder.FreizeitbaederControl;
+import business.businessFreizeitbaeder.FreizeitbaederModel;
+import gui.guiFreizeitbaeder.FreizeitbaederControl;
 
 import java.util.ArrayList;
 
-import business.Freizeitbad;
+import business.businessFreizeitbaeder.Freizeitbad;
 import javafx.event.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;

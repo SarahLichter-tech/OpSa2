@@ -5,7 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import business.Freizeitbad;
+import business.businessFreizeitbaeder.Freizeitbad;
 
 public class ConcreteCsvWriterProduct extends WriterProduct {
 BufferedWriter aus;	
